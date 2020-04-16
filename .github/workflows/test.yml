@@ -20,9 +20,10 @@ jobs:
         with: 
            sfdx-auth-url: force://PlatformCLI::5Aep861MrMaWJGT9SORil2bKY7OITVNspb8V_4qb1ywkpQEmGZIQUgRBAN8p3YdGT..nVvaioiyGqJP6ZFma_IM@na112.salesforce.com
            -name: sfdx-test-run
-           run: |
-           git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
-           sfdx force:apex:test:run -l RunLocalTests -w 30
+           run: sfdx force:apex:test:run -l RunLocalTests -w 30
+
+           -name: git-diff
+           run:  git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
