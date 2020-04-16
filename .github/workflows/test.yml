@@ -22,8 +22,6 @@ jobs:
         - name: sfdx-test-run
           run: sfdx force:apex:test:run -l RunLocalTests -w 30
 
-        - name: git-diff
-          run:  git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
@@ -43,3 +41,6 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+
+    - name: git-diff
+      run:  git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
