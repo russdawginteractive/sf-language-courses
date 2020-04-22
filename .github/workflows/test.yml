@@ -41,12 +41,9 @@ jobs:
         echo Add other actions to build,
         echo test, and deploy your project.
 
-    - name: get changed files
+    - name: Get changed files
       id: getfile
-      run: |
-        echo "::set-output name=files::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | xargs)"
-        echo "$0"
+      run: "::set-output name=files::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | xargs)"
 
-    - name: echo output
-      run: |
-        echo ${{ steps.getfile.outputs.files }}
+    - name: Show changed files
+      run: echo ${{ steps.getfile.outputs.files }}
